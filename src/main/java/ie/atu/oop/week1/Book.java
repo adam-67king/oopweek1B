@@ -51,10 +51,20 @@ public class Book
 
     public void borrowBook() {
         if (status == BookStatus.ON_LOAN) {
-            throw new IllegalStateException(
-                    "Book is already on loan");
+            throw new IllegalStateException("Book is already on loan");
         }
         status = BookStatus.ON_LOAN;
+    }
+
+    public void returnBook() {
+        if (status == BookStatus.AVAILABLE) {
+            throw new IllegalStateException("Book is already available");
+        }
+
+        if(status == BookStatus.ON_LOAN) {
+            status = BookStatus.AVAILABLE;
+        }
+
     }
 
 }
